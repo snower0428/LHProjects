@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  LHTravel
+
+  Created by leihui on 15/5/13.
+  Copyright (c) 2015年 ND WebSoft Inc. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "測試";

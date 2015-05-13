@@ -1,0 +1,26 @@
+//
+//  LHTravel-Prefix.pch
+//  LHTravel
+//
+//  Created by leihui on 15/5/13.
+//  Copyright (c) 2015年 ND WebSoft Inc. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+	#import <UIKit/UIKit.h>
+	#import <Foundation/Foundation.h>
+
+	#import <PHLog/Logger.h>
+	#import <PHCategories/PHCategories.h>
+	#import <PHUIKit/PHUIKit.h>
+	#import <PHUtility/PHUtility.h>
+
+	#import "LHCommonDefines.h"
+	#import "ResourcesManager.h"
+#endif
