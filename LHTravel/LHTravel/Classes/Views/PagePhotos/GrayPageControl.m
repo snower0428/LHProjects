@@ -59,7 +59,7 @@
 -(void)setCurrentPage:(NSInteger)page
 {
 	[super setCurrentPage:page];
-	[self updateDots];
+	[self updateDots];//modify by ygf
 }
 
 -(void)updateDots{

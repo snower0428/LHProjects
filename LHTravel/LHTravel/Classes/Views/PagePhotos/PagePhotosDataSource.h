@@ -9,19 +9,15 @@
 #import <UIKit/UIKit.h>
 
 
-@protocol PagePhotosDataSource<NSObject>
+@protocol PagePhotosDataSource
 
 // 有多少页
 //
-- (int)numberOfPages;
+- (NSInteger)numberOfPages;
 
-// 每页的默认的本地图片
+// 每页的图片
 //
 - (NSString *)imageAtIndex:(NSInteger)index;
-
-//每页的默认的服务器端图片
-//
-- (NSString *)imageUrlAtIndex:(NSInteger)index;
 
 //点中哪张图片
 

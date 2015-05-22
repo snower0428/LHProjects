@@ -54,6 +54,7 @@
 		79624DC81907AEC700DF97BD /* Logger.m in Sources */ = {isa = PBXBuildFile; fileRef = 79624DC71907AEC700DF97BD /* Logger.m */; };
 		797C27911AE740C20015376A /* EOCSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 797C27901AE740C20015376A /* EOCSoundPlayer.m */; };
 		797C27931AE743790015376A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 797C27921AE743790015376A /* AudioToolbox.framework */; };
+		797C723F1B05E33B0013D062 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797C723E1B05E33B0013D062 /* TestViewController.m */; };
 		7981E1E81AEA152300B291E7 /* BlockDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7981E1E71AEA152300B291E7 /* BlockDemoViewController.m */; };
 		7982ABC917E3149700E45423 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7982ABC817E3149700E45423 /* CoreMotion.framework */; };
 		798CE5191AE8DC7F00AFBCDE /* PHNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 798CE5181AE8DC7F00AFBCDE /* PHNetworkManager.m */; };
@@ -176,6 +177,8 @@
 		797C278F1AE740C20015376A /* EOCSoundPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EOCSoundPlayer.h; sourceTree = "<group>"; };
 		797C27901AE740C20015376A /* EOCSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EOCSoundPlayer.m; sourceTree = "<group>"; };
 		797C27921AE743790015376A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		797C723D1B05E33B0013D062 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		797C723E1B05E33B0013D062 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		7981E1E61AEA152300B291E7 /* BlockDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockDemoViewController.h; sourceTree = "<group>"; };
 		7981E1E71AEA152300B291E7 /* BlockDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockDemoViewController.m; sourceTree = "<group>"; };
 		7982ABC817E3149700E45423 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -354,6 +357,8 @@
 				7951ADEA1A358FA8002BA5B7 /* KeychainDemoViewCtrl.m */,
 				7981E1E61AEA152300B291E7 /* BlockDemoViewController.h */,
 				7981E1E71AEA152300B291E7 /* BlockDemoViewController.m */,
+				797C723D1B05E33B0013D062 /* TestViewController.h */,
+				797C723E1B05E33B0013D062 /* TestViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -619,6 +624,7 @@
 				7951ADE21A358F18002BA5B7 /* PDKeychainBindings.m in Sources */,
 				79FC171117E2F80D00699248 /* ViewController.m in Sources */,
 				79905DB31AE6378D0006FB10 /* EOCEmployee.m in Sources */,
+				797C723F1B05E33B0013D062 /* TestViewController.m in Sources */,
 				7925871017F036530062BB42 /* ABGroup.m in Sources */,
 				791BE9FC185868AA009E706E /* UIImage+ImageEffects.m in Sources */,
 				7925871117F036530062BB42 /* ABMultiValue.m in Sources */,

@@ -20,6 +20,8 @@
 
 #import "PHNetworkManager.h"
 
+#import "TestViewController.h"
+
 @implementation NSString (MyLower)
 
 - (NSString *)myLowercaseString
@@ -236,6 +238,11 @@ int (*funcptr)(int) = &func;
 	
 	NSString *str = @"Hello World!!!";
 	NSLog(@"lower:%@", [str lowercaseString]);
+	
+	//
+	TestViewController *ctrl = [[[TestViewController alloc] init] autorelease];
+	UINavigationController *navCtrl = [[[UINavigationController alloc] initWithRootViewController:ctrl] autorelease];
+	[self presentViewController:navCtrl animated:YES completion:nil];
 }
 
 - (void)comparaBlock

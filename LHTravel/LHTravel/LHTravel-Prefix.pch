@@ -22,5 +22,6 @@
 	#import <PHUtility/PHUtility.h>
 
 	#import "LHCommonDefines.h"
+	#import "LHPathDefines.h"
 	#import "ResourcesManager.h"
 #endif

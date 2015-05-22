@@ -34,7 +34,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ResourcesManager)
 
 + (NSString *)defaultSkinPath
 {
-    return [NSString stringWithFormat:@"%@/Resource/Image", [[NSBundle mainBundle] resourcePath]];
+    return [NSString stringWithFormat:@"%@/Resource/Images", [[NSBundle mainBundle] resourcePath]];
 }
 
 - (UIImage *)imageWithName:(NSString *)name

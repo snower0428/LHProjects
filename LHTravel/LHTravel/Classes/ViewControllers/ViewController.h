@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LHTabController.h"
 
-@interface ViewController : UITabBarController
-
+@interface ViewController : LHTabController
 
 @end
-
