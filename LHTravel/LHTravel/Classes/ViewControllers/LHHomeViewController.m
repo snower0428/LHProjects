@@ -38,7 +38,7 @@
 	}
 	
 	[self initBannerView];
-	
+	[self initButtons];
 	
 	
 }
@@ -60,7 +60,11 @@
 - (void)initButtons
 {
 	NSArray *arrayTitle = @[@"有棋牌", @"有垂钓", @"有烧烤", @"有拓展", @"有采摘"];
-	NSArray *arrayColor = @[RGB(254, 176, 91),]
+	NSArray *arrayColor = @[RGB(254, 176, 91),
+							RGB(254, 176, 91),
+							RGB(254, 176, 91),
+							RGB(254, 176, 91),
+							RGB(254, 176, 91),];
 	
 	CGFloat topMargin = _bannerView.frame.size.height + 8.f*iPhoneWidthScaleFactor;
 	CGFloat buttonSize = 64.f*iPhoneWidthScaleFactor;
@@ -69,13 +73,31 @@
 		
 		CGRect viewFrame = CGRectMake(buttonSize*i, topMargin, buttonSize, buttonSize);
 		UIView *view = [[[UIView alloc] initWithFrame:viewFrame] autorelease];
+		[self.view addSubview:view];
 		
-		CGFloat btnLeftMargin = 7.f*iPhoneWidthScaleFactor;
-		CGRect buttonFrame = CGRectMake(btnLeftMargin, 0, 50.f*iPhoneWidthScaleFactor, 50.f*iPhoneWidthScaleFactor);
+		CGFloat btnLeftMargin = 12.f*iPhoneWidthScaleFactor;
+		CGRect buttonFrame = CGRectMake(btnLeftMargin, 0, 40.f*iPhoneWidthScaleFactor, 40.f*iPhoneWidthScaleFactor);
+		
+		// Button
 		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-		
 		button.frame = buttonFrame;
-		[self.view addSubview:button];
+		button.layer.cornerRadius = buttonFrame.size.width/2;
+		
+		if (i < [arrayColor count]) {
+			[button setBackgroundColor:[arrayColor objectAtIndex:i]];
+		}
+		
+		[view addSubview:button];
+		
+		// Label
+		CGRect labelFrame = CGRectMake(0, buttonFrame.origin.y + buttonFrame.size.height, viewFrame.size.width, view.frame.size.height - buttonFrame.size.height);
+		NSString *title = nil;
+		if (i < [arrayTitle count]) {
+			title = [arrayTitle objectAtIndex:i];
+		}
+		
+		UILabel *label = [UILabel labelWithName:title font:[UIFont systemFontOfSize:12.f] frame:labelFrame color:[UIColor blackColor] alignment:UITextAlignmentCenter];
+		[view addSubview:label];
 	}
 }
 
