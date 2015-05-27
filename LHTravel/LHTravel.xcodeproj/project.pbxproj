@@ -22,6 +22,7 @@
 		790085CB1B0360DE0026C1EE /* LHHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790085CA1B0360DE0026C1EE /* LHHomeViewController.m */; };
 		790085CE1B0360EC0026C1EE /* LHSpecialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790085CD1B0360EC0026C1EE /* LHSpecialViewController.m */; };
 		790085D11B0360FB0026C1EE /* LHMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790085D01B0360FB0026C1EE /* LHMineViewController.m */; };
+		7916B08A1B15AFAC00C49434 /* LHTravelDetailViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7916B0891B15AFAC00C49434 /* LHTravelDetailViewCtrl.m */; };
 		795E1FC91B01AF7000E15971 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 795E1FC81B01AF7000E15971 /* main.m */; };
 		795E1FD41B01AF7000E15971 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 795E1FD31B01AF7000E15971 /* Images.xcassets */; };
 		795E1FE31B01AF7000E15971 /* LHTravelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 795E1FE21B01AF7000E15971 /* LHTravelTests.m */; };
@@ -29,6 +30,8 @@
 		796EC7611B04C68F009579D8 /* GrayPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 796EC75D1B04C68E009579D8 /* GrayPageControl.m */; };
 		796EC7621B04C68F009579D8 /* PagePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 796EC7601B04C68F009579D8 /* PagePhotosView.m */; };
 		796EC7651B04C736009579D8 /* TouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 796EC7641B04C736009579D8 /* TouchView.m */; };
+		7986A0631B12F60F00AAA02E /* LHTravelItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7986A0621B12F60F00AAA02E /* LHTravelItem.m */; };
+		7986A0661B12F82600AAA02E /* LHTravelCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7986A0651B12F82600AAA02E /* LHTravelCellView.m */; };
 		798F38811B09F59A0023A506 /* ResourcesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F386D1B09F59A0023A506 /* ResourcesManager.m */; };
 		798F38821B09F59A0023A506 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F38701B09F59A0023A506 /* SDImageCache.m */; };
 		798F38831B09F59A0023A506 /* SDWebImageDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F38741B09F59A0023A506 /* SDWebImageDecoder.m */; };
@@ -78,6 +81,8 @@
 		790085CD1B0360EC0026C1EE /* LHSpecialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHSpecialViewController.m; sourceTree = "<group>"; };
 		790085CF1B0360FB0026C1EE /* LHMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHMineViewController.h; sourceTree = "<group>"; };
 		790085D01B0360FB0026C1EE /* LHMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHMineViewController.m; sourceTree = "<group>"; };
+		7916B0881B15AFAC00C49434 /* LHTravelDetailViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHTravelDetailViewCtrl.h; sourceTree = "<group>"; };
+		7916B0891B15AFAC00C49434 /* LHTravelDetailViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHTravelDetailViewCtrl.m; sourceTree = "<group>"; };
 		795E1FC31B01AF7000E15971 /* LHTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LHTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		795E1FC71B01AF7000E15971 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		795E1FC81B01AF7000E15971 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -93,6 +98,10 @@
 		796EC7601B04C68F009579D8 /* PagePhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagePhotosView.m; sourceTree = "<group>"; };
 		796EC7631B04C736009579D8 /* TouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchView.h; sourceTree = "<group>"; };
 		796EC7641B04C736009579D8 /* TouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchView.m; sourceTree = "<group>"; };
+		7986A0611B12F60F00AAA02E /* LHTravelItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHTravelItem.h; sourceTree = "<group>"; };
+		7986A0621B12F60F00AAA02E /* LHTravelItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHTravelItem.m; sourceTree = "<group>"; };
+		7986A0641B12F82600AAA02E /* LHTravelCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHTravelCellView.h; sourceTree = "<group>"; };
+		7986A0651B12F82600AAA02E /* LHTravelCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHTravelCellView.m; sourceTree = "<group>"; };
 		798F386C1B09F59A0023A506 /* ResourcesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcesManager.h; sourceTree = "<group>"; };
 		798F386D1B09F59A0023A506 /* ResourcesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourcesManager.m; sourceTree = "<group>"; };
 		798F386F1B09F59A0023A506 /* SDImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageCache.h; sourceTree = "<group>"; };
@@ -168,6 +177,8 @@
 		7900857F1B0344700026C1EE /* Modes */ = {
 			isa = PBXGroup;
 			children = (
+				7986A0611B12F60F00AAA02E /* LHTravelItem.h */,
+				7986A0621B12F60F00AAA02E /* LHTravelItem.m */,
 			);
 			path = Modes;
 			sourceTree = "<group>";
@@ -183,6 +194,8 @@
 				790085CD1B0360EC0026C1EE /* LHSpecialViewController.m */,
 				790085CF1B0360FB0026C1EE /* LHMineViewController.h */,
 				790085D01B0360FB0026C1EE /* LHMineViewController.m */,
+				7916B0881B15AFAC00C49434 /* LHTravelDetailViewCtrl.h */,
+				7916B0891B15AFAC00C49434 /* LHTravelDetailViewCtrl.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -191,6 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				796EC75B1B04C68E009579D8 /* PagePhotos */,
+				7986A0641B12F82600AAA02E /* LHTravelCellView.h */,
+				7986A0651B12F82600AAA02E /* LHTravelCellView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -447,6 +462,7 @@
 				798F38811B09F59A0023A506 /* ResourcesManager.m in Sources */,
 				796EC7611B04C68F009579D8 /* GrayPageControl.m in Sources */,
 				790085841B0344700026C1EE /* AppDelegate.m in Sources */,
+				7916B08A1B15AFAC00C49434 /* LHTravelDetailViewCtrl.m in Sources */,
 				795E1FC91B01AF7000E15971 /* main.m in Sources */,
 				790085CE1B0360EC0026C1EE /* LHSpecialViewController.m in Sources */,
 				796EC7621B04C68F009579D8 /* PagePhotosView.m in Sources */,
@@ -456,7 +472,9 @@
 				796EC7651B04C736009579D8 /* TouchView.m in Sources */,
 				798F38881B09F59A0023A506 /* UIImageView+WebCache.m in Sources */,
 				798F38851B09F59A0023A506 /* SDWebImageManager.m in Sources */,
+				7986A0631B12F60F00AAA02E /* LHTravelItem.m in Sources */,
 				798F38841B09F59A0023A506 /* SDWebImageDownloader.m in Sources */,
+				7986A0661B12F82600AAA02E /* LHTravelCellView.m in Sources */,
 				790085CB1B0360DE0026C1EE /* LHHomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

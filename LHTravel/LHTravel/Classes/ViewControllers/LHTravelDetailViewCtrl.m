@@ -1,19 +1,15 @@
 //
-//  LHHomeViewController.m
+//  LHTravelDetailViewCtrl.m
 //  LHTravel
 //
-//  Created by leihui on 15/5/13.
+//  Created by leihui on 15/5/27.
 //  Copyright (c) 2015年 ND WebSoft Inc. All rights reserved.
 //
 
-#import "LHHomeViewController.h"
-#import "PagePhotosView.h"
-#import "LHTravelCellView.h"
 #import "LHTravelDetailViewCtrl.h"
+#import "PagePhotosView.h"
 
-#define kCellHeight		(150.f*iPhoneWidthScaleFactor)
-
-@interface LHHomeViewController () <PagePhotosDataSource, UITableViewDataSource, UITableViewDelegate>
+@interface LHTravelDetailViewCtrl () <PagePhotosDataSource, UITableViewDataSource, UITableViewDelegate>
 {
 	PagePhotosView		*_bannerView;
 	NSMutableArray      *_banners;
@@ -23,7 +19,7 @@
 
 @end
 
-@implementation LHHomeViewController
+@implementation LHTravelDetailViewCtrl
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,9 +40,7 @@
 	}
 	
 	[self initBannerView];
-	[self initButtons];
 	[self initTableView];
-	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,53 +55,6 @@
 	_bannerView = [[PagePhotosView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, PHOTO_HEIGHT) withDataSource:self];
 	_bannerView.backgroundColor = [UIColor orangeColor];
 	[self.view addSubview:_bannerView];
-}
-
-- (void)initButtons
-{
-	//NSArray *arrayTitle = @[@"有棋牌", @"有垂钓", @"有烧烤", @"有拓展", @"有采摘"];
-	NSArray *arrayTitle = @[@"1", @"2", @"3", @"4", @"5"];
-	NSArray *arrayColor = @[RGB(254, 176, 91),
-							RGB(254, 176, 91),
-							RGB(254, 176, 91),
-							RGB(254, 176, 91),
-							RGB(254, 176, 91),];
-	
-	CGFloat topMargin = _bannerView.frame.size.height;
-	CGFloat buttonSize = 64.f*iPhoneWidthScaleFactor;
-	
-	for (NSInteger i = 0; i < [arrayTitle count]; i++) {
-		
-		CGRect viewFrame = CGRectMake(buttonSize*i, topMargin, buttonSize, buttonSize);
-		UIView *view = [[[UIView alloc] initWithFrame:viewFrame] autorelease];
-		[self.view addSubview:view];
-		
-		CGFloat btnLeftMargin = 14.f*iPhoneWidthScaleFactor;
-		CGFloat btnTopMargin = 6.f*iPhoneWidthScaleFactor;
-		
-		CGRect buttonFrame = CGRectMake(btnLeftMargin, btnTopMargin, 36.f*iPhoneWidthScaleFactor, 36.f*iPhoneWidthScaleFactor);
-		
-		// Button
-		UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-		button.frame = buttonFrame;
-		button.layer.cornerRadius = buttonFrame.size.width/2;
-		
-		if (i < [arrayColor count]) {
-			[button setBackgroundColor:[arrayColor objectAtIndex:i]];
-		}
-		
-		[view addSubview:button];
-		
-		// Label
-		CGRect labelFrame = CGRectMake(0, buttonFrame.origin.y + buttonFrame.size.height, viewFrame.size.width, 16.f*iPhoneWidthScaleFactor);
-		NSString *title = nil;
-		if (i < [arrayTitle count]) {
-			title = [arrayTitle objectAtIndex:i];
-		}
-		
-		UILabel *label = [UILabel labelWithName:title font:[UIFont systemFontOfSize:10.f] frame:labelFrame color:[UIColor blackColor] alignment:UITextAlignmentCenter];
-		[view addSubview:label];
-	}
 }
 
 - (void)initTableView
@@ -158,7 +105,7 @@
 		}
 	}
 	else {
-		//如果为空，则显示默认图
+//如果为空，则显示默认图
 //		BOOL status = [[NetworkStatusMgr sharedInstance] getNetworkStatus];
 //		if (!status)
 //			[PHLabelMessage showMessageLable:_(@"Network error !") inView:self.view withTimeInterval:1.5];
@@ -172,65 +119,49 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+	return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+	return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"cellIdentifier";
-    
-//    NSInteger row = indexPath.row;
+	static NSString *cellIdentifier = @"cellIdentifier";
 	
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
+	//    NSInteger row = indexPath.row;
+	
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+	if (cell == nil) {
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
 		cell.backgroundColor = [UIColor lightGrayColor];
-		
-		CGFloat leftMargin = 6.f*iPhoneWidthScaleFactor;
-		CGFloat topMargin = 3.f*iPhoneWidthScaleFactor;
-		CGFloat width = SCREEN_WIDTH - leftMargin*2;
-		
-		CGRect frame = CGRectMake(5.f, 4.f, width, kCellHeight - topMargin*2);
-		LHTravelCellView *cellView = [[[LHTravelCellView alloc] initWithFrame:frame] autorelease];
-		[cell.contentView addSubview:cellView];
-    }
-    
+	}
+	
 //    if (row < <#count#>) {
 //        <#do something#>
 //    }
 	
-    return cell;
+	return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return kCellHeight;
+	return 50.f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-	
-	LHTravelDetailViewCtrl *ctrl = [[[LHTravelDetailViewCtrl alloc] init] autorelease];
-	[self.navigationController pushViewController:ctrl animated:YES];
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - dealloc
 
 - (void)dealloc
 {
-	[_bannerView release];
-	[_banners release];
-	
-	[_tableView release];
-	
 	[super dealloc];
 }
 

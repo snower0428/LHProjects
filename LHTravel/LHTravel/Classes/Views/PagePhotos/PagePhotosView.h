@@ -16,7 +16,7 @@
 #define SCREEN_X_OFFSET   0
 #define SCREEN_Y_OFFSET   0
 #define PHOTO_WIDTH		  SCREEN_WIDTH
-#define PHOTO_HEIGHT	  (160*iPhoneWidthScaleFactor)//184->170
+#define PHOTO_HEIGHT	  (140*iPhoneWidthScaleFactor)//184->170
 #define PHOTO_INTERVAL    0
 
 
