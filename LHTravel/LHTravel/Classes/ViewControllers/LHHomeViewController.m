@@ -33,9 +33,13 @@
 	
 	_banners = [[NSMutableArray alloc] init];
 	
+#if 0
 	NSArray *array = @[@"http://www.onegreen.org/desk/Upload_desk/200902/20090221002654817.jpg",
 					   @"http://www.onegreen.org/desk/Upload_desk/200902/20090221000533118.jpg",
 					   @"http://www.ulifeel.com/wp-content/uploads/2014/04/moore-3-640x320.jpg",];
+#else
+	NSArray *array = @[@"", @"", @""];
+#endif
 	for (NSInteger i = 0; i < [array count]; i++) {
 		NSString *strUrl = [array objectAtIndex:i];
 		if (strUrl) {
@@ -43,10 +47,7 @@
 		}
 	}
 	
-	[self initBannerView];
-	[self initButtons];
 	[self initTableView];
-	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,15 +57,36 @@
 
 #pragma mark - Private
 
-- (void)initBannerView
+- (void)initTableView
 {
-	_bannerView = [[PagePhotosView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, PHOTO_HEIGHT) withDataSource:self];
-	_bannerView.backgroundColor = [UIColor orangeColor];
-	[self.view addSubview:_bannerView];
+	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.f, 0.f, SCREEN_WIDTH, kAppView_Height-TABBAR_HEIGHT) style:UITableViewStylePlain];
+	_tableView.backgroundColor = [UIColor clearColor];
+	_tableView.dataSource = self;
+	_tableView.delegate = self;
+	_tableView.showsHorizontalScrollIndicator = NO;
+	_tableView.showsVerticalScrollIndicator = NO;
+	_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	_tableView.backgroundView.backgroundColor = [UIColor clearColor];
+	_tableView.tableHeaderView = [self tableHeaderView];
+	[self.view addSubview:_tableView];
 }
 
-- (void)initButtons
+- (UIView *)tableHeaderView
 {
+	CGFloat buttonSize = 64.f*iPhoneWidthScaleFactor;
+	CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, PHOTO_HEIGHT+buttonSize);
+	
+	UIView *headerView = [[[UIView alloc] initWithFrame:frame] autorelease];
+	headerView.backgroundColor = [UIColor orangeColor];
+	
+	// Banner view
+	if (_bannerView == nil) {
+		_bannerView = [[PagePhotosView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, PHOTO_HEIGHT) withDataSource:self];
+		_bannerView.backgroundColor = [UIColor orangeColor];
+		[headerView addSubview:_bannerView];
+	}
+	
+	// Buttons
 	//NSArray *arrayTitle = @[@"有棋牌", @"有垂钓", @"有烧烤", @"有拓展", @"有采摘"];
 	NSArray *arrayTitle = @[@"1", @"2", @"3", @"4", @"5"];
 	NSArray *arrayColor = @[RGB(254, 176, 91),
@@ -74,13 +96,12 @@
 							RGB(254, 176, 91),];
 	
 	CGFloat topMargin = _bannerView.frame.size.height;
-	CGFloat buttonSize = 64.f*iPhoneWidthScaleFactor;
 	
 	for (NSInteger i = 0; i < [arrayTitle count]; i++) {
 		
 		CGRect viewFrame = CGRectMake(buttonSize*i, topMargin, buttonSize, buttonSize);
 		UIView *view = [[[UIView alloc] initWithFrame:viewFrame] autorelease];
-		[self.view addSubview:view];
+		[headerView addSubview:view];
 		
 		CGFloat btnLeftMargin = 14.f*iPhoneWidthScaleFactor;
 		CGFloat btnTopMargin = 6.f*iPhoneWidthScaleFactor;
@@ -108,21 +129,8 @@
 		UILabel *label = [UILabel labelWithName:title font:[UIFont systemFontOfSize:10.f] frame:labelFrame color:[UIColor blackColor] alignment:UITextAlignmentCenter];
 		[view addSubview:label];
 	}
-}
-
-- (void)initTableView
-{
-	CGFloat topMargin = _bannerView.frame.size.height + 64*iPhoneWidthScaleFactor;
 	
-	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.f, topMargin, SCREEN_WIDTH, kAppView_Height-topMargin) style:UITableViewStylePlain];
-	_tableView.backgroundColor = [UIColor clearColor];
-	_tableView.dataSource = self;
-	_tableView.delegate = self;
-	_tableView.showsHorizontalScrollIndicator = NO;
-	_tableView.showsVerticalScrollIndicator = NO;
-	_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-	_tableView.backgroundView.backgroundColor = [UIColor clearColor];
-	[self.view addSubview:_tableView];
+	return headerView;
 }
 
 #pragma mark -

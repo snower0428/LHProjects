@@ -29,9 +29,13 @@
 	
 	_banners = [[NSMutableArray alloc] init];
 	
+#if 0
 	NSArray *array = @[@"http://www.onegreen.org/desk/Upload_desk/200902/20090221002654817.jpg",
 					   @"http://www.onegreen.org/desk/Upload_desk/200902/20090221000533118.jpg",
 					   @"http://www.ulifeel.com/wp-content/uploads/2014/04/moore-3-640x320.jpg",];
+#else
+	NSArray *array = @[@"", @"", @""];
+#endif
 	for (NSInteger i = 0; i < [array count]; i++) {
 		NSString *strUrl = [array objectAtIndex:i];
 		if (strUrl) {
@@ -39,7 +43,6 @@
 		}
 	}
 	
-	[self initBannerView];
 	[self initTableView];
 }
 
@@ -50,18 +53,9 @@
 
 #pragma mark - Private
 
-- (void)initBannerView
-{
-	_bannerView = [[PagePhotosView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, PHOTO_HEIGHT) withDataSource:self];
-	_bannerView.backgroundColor = [UIColor orangeColor];
-	[self.view addSubview:_bannerView];
-}
-
 - (void)initTableView
 {
-	CGFloat topMargin = _bannerView.frame.size.height + 64*iPhoneWidthScaleFactor;
-	
-	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.f, topMargin, SCREEN_WIDTH, kAppView_Height-topMargin) style:UITableViewStylePlain];
+	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.f, 0.f, SCREEN_WIDTH, kAppView_Height) style:UITableViewStylePlain];
 	_tableView.backgroundColor = [UIColor clearColor];
 	_tableView.dataSource = self;
 	_tableView.delegate = self;
@@ -69,7 +63,25 @@
 	_tableView.showsVerticalScrollIndicator = NO;
 	_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	_tableView.backgroundView.backgroundColor = [UIColor clearColor];
+	_tableView.tableHeaderView = [self tableHeaderView];
 	[self.view addSubview:_tableView];
+}
+
+- (UIView *)tableHeaderView
+{
+	CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, PHOTO_HEIGHT);
+	
+	UIView *headerView = [[[UIView alloc] initWithFrame:frame] autorelease];
+	headerView.backgroundColor = [UIColor orangeColor];
+	
+	// Banner view
+	if (_bannerView == nil) {
+		_bannerView = [[PagePhotosView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, PHOTO_HEIGHT) withDataSource:self];
+		_bannerView.backgroundColor = [UIColor orangeColor];
+		[headerView addSubview:_bannerView];
+	}
+	
+	return headerView;
 }
 
 #pragma mark -
@@ -162,6 +174,11 @@
 
 - (void)dealloc
 {
+	[_bannerView release];
+	[_banners release];
+	
+	[_tableView release];
+	
 	[super dealloc];
 }
 
