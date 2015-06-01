@@ -8,8 +8,18 @@
 
 #import "LHTravelDetailViewCtrl.h"
 #import "PagePhotosView.h"
+#import "LHDetailAddressCell.h"
+#import "LHDetailConsumeCell.h"
+#import "LHDetailIntroCell.h"
+#import "LHDetailCommentCell.h"
 
-@interface LHTravelDetailViewCtrl () <PagePhotosDataSource, UITableViewDataSource, UITableViewDelegate>
+static const CGFloat kAddressCellHeight = 50.f;
+static const CGFloat kComsumeCellHeight = 50.f;
+static const CGFloat kIntroCellHeight = 50.f;
+static const CGFloat kCommentCellHeight = 50.f;
+
+@interface LHTravelDetailViewCtrl () <PagePhotosDataSource, UITableViewDataSource, UITableViewDelegate,
+										LHDetailAddressCellDelegate, LHDetailConsumeCellDelegate>
 {
 	PagePhotosView		*_bannerView;
 	NSMutableArray      *_banners;
@@ -61,7 +71,7 @@
 	_tableView.delegate = self;
 	_tableView.showsHorizontalScrollIndicator = NO;
 	_tableView.showsVerticalScrollIndicator = NO;
-	_tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	_tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 	_tableView.backgroundView.backgroundColor = [UIColor clearColor];
 	_tableView.tableHeaderView = [self tableHeaderView];
 	[self.view addSubview:_tableView];
@@ -143,17 +153,43 @@
 {
 	static NSString *cellIdentifier = @"cellIdentifier";
 	
-	//    NSInteger row = indexPath.row;
+    NSInteger row = indexPath.row;
 	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
 	if (cell == nil) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier] autorelease];
-		cell.backgroundColor = [UIColor lightGrayColor];
+		cell.backgroundColor = [UIColor whiteColor];
+		cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	}
 	
-//    if (row < <#count#>) {
-//        <#do something#>
-//    }
+	switch (row) {
+		case 0:
+		{
+			CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, kAddressCellHeight);
+			LHDetailAddressCell *addressCell = [[[LHDetailAddressCell alloc] initWithFrame:frame] autorelease];
+			addressCell.delegate = self;
+			[cell.contentView addSubview:addressCell];
+			break;
+		}
+		case 1:
+		{
+			CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, kComsumeCellHeight);
+			LHDetailConsumeCell *addressCell = [[[LHDetailConsumeCell alloc] initWithFrame:frame] autorelease];
+			addressCell.delegate = self;
+			[cell.contentView addSubview:addressCell];
+			break;
+		}
+		case 2:
+		{
+			break;
+		}
+		case 3:
+		{
+			break;
+		}
+		default:
+			break;
+	}
 	
 	return cell;
 }
@@ -162,12 +198,45 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 50.f;
+	CGFloat height = 0.f;
+	NSInteger row = indexPath.row;
+	switch (row) {
+		case 0:
+		{
+			height = kAddressCellHeight;
+			break;
+		}
+		case 1:
+		{
+			height = kComsumeCellHeight;
+			break;
+		}
+		case 2:
+		{
+			height = kIntroCellHeight;
+			break;
+		}
+		case 3:
+		{
+			height = kCommentCellHeight;
+			break;
+		}
+		default:
+			break;
+	}
+	return height;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	//[tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - LHDetailAddressCellDelegate
+
+- (void)gotoThePlace
+{
+	MLOG(@"gotoThePlace");
 }
 
 #pragma mark - dealloc

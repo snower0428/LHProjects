@@ -40,6 +40,10 @@
 		798F38861B09F59A0023A506 /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F387C1B09F59A0023A506 /* SDWebImagePrefetcher.m */; };
 		798F38871B09F59A0023A506 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F387E1B09F59A0023A506 /* UIButton+WebCache.m */; };
 		798F38881B09F59A0023A506 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F38801B09F59A0023A506 /* UIImageView+WebCache.m */; };
+		799472CC1B1C652000FD6211 /* LHDetailAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799472CB1B1C652000FD6211 /* LHDetailAddressCell.m */; };
+		799472CF1B1C656100FD6211 /* LHDetailConsumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799472CE1B1C656100FD6211 /* LHDetailConsumeCell.m */; };
+		799472D21B1C658D00FD6211 /* LHDetailIntroCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799472D11B1C658D00FD6211 /* LHDetailIntroCell.m */; };
+		799472D51B1C65EF00FD6211 /* LHDetailCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799472D41B1C65EF00FD6211 /* LHDetailCommentCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +127,14 @@
 		798F387F1B09F59A0023A506 /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		798F38801B09F59A0023A506 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		798F38891B09F60C0023A506 /* LHPathDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LHPathDefines.h; path = ../../../Common/LHPathDefines.h; sourceTree = "<group>"; };
+		799472CA1B1C652000FD6211 /* LHDetailAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHDetailAddressCell.h; sourceTree = "<group>"; };
+		799472CB1B1C652000FD6211 /* LHDetailAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHDetailAddressCell.m; sourceTree = "<group>"; };
+		799472CD1B1C656100FD6211 /* LHDetailConsumeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHDetailConsumeCell.h; sourceTree = "<group>"; };
+		799472CE1B1C656100FD6211 /* LHDetailConsumeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHDetailConsumeCell.m; sourceTree = "<group>"; };
+		799472D01B1C658D00FD6211 /* LHDetailIntroCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHDetailIntroCell.h; sourceTree = "<group>"; };
+		799472D11B1C658D00FD6211 /* LHDetailIntroCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHDetailIntroCell.m; sourceTree = "<group>"; };
+		799472D31B1C65EF00FD6211 /* LHDetailCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHDetailCommentCell.h; sourceTree = "<group>"; };
+		799472D41B1C65EF00FD6211 /* LHDetailCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHDetailCommentCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +215,7 @@
 		790085831B0344700026C1EE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				799472C91B1C617400FD6211 /* DetailCellView */,
 				796EC75B1B04C68E009579D8 /* PagePhotos */,
 				7986A0641B12F82600AAA02E /* LHTravelCellView.h */,
 				7986A0651B12F82600AAA02E /* LHTravelCellView.m */,
@@ -349,6 +362,21 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		799472C91B1C617400FD6211 /* DetailCellView */ = {
+			isa = PBXGroup;
+			children = (
+				799472CA1B1C652000FD6211 /* LHDetailAddressCell.h */,
+				799472CB1B1C652000FD6211 /* LHDetailAddressCell.m */,
+				799472CD1B1C656100FD6211 /* LHDetailConsumeCell.h */,
+				799472CE1B1C656100FD6211 /* LHDetailConsumeCell.m */,
+				799472D01B1C658D00FD6211 /* LHDetailIntroCell.h */,
+				799472D11B1C658D00FD6211 /* LHDetailIntroCell.m */,
+				799472D31B1C65EF00FD6211 /* LHDetailCommentCell.h */,
+				799472D41B1C65EF00FD6211 /* LHDetailCommentCell.m */,
+			);
+			path = DetailCellView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -456,9 +484,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				798F38831B09F59A0023A506 /* SDWebImageDecoder.m in Sources */,
+				799472D21B1C658D00FD6211 /* LHDetailIntroCell.m in Sources */,
 				798F38871B09F59A0023A506 /* UIButton+WebCache.m in Sources */,
 				798F38861B09F59A0023A506 /* SDWebImagePrefetcher.m in Sources */,
 				790085851B0344700026C1EE /* ViewController.m in Sources */,
+				799472CF1B1C656100FD6211 /* LHDetailConsumeCell.m in Sources */,
 				798F38811B09F59A0023A506 /* ResourcesManager.m in Sources */,
 				796EC7611B04C68F009579D8 /* GrayPageControl.m in Sources */,
 				790085841B0344700026C1EE /* AppDelegate.m in Sources */,
@@ -471,8 +501,10 @@
 				790085AD1B0351C10026C1EE /* LHTabController.m in Sources */,
 				796EC7651B04C736009579D8 /* TouchView.m in Sources */,
 				798F38881B09F59A0023A506 /* UIImageView+WebCache.m in Sources */,
+				799472CC1B1C652000FD6211 /* LHDetailAddressCell.m in Sources */,
 				798F38851B09F59A0023A506 /* SDWebImageManager.m in Sources */,
 				7986A0631B12F60F00AAA02E /* LHTravelItem.m in Sources */,
+				799472D51B1C65EF00FD6211 /* LHDetailCommentCell.m in Sources */,
 				798F38841B09F59A0023A506 /* SDWebImageDownloader.m in Sources */,
 				7986A0661B12F82600AAA02E /* LHTravelCellView.m in Sources */,
 				790085CB1B0360DE0026C1EE /* LHHomeViewController.m in Sources */,
