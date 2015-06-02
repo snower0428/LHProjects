@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>23436146-B8A1-4605-A999-5CD46A48A92E</string>
 	<key>IDESourceControlProjectName</key>
-	<string>LHDemo</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>06469E7924A0D40D8DA1C3651E5CBDB044DDEDB9</key>
 		<string>https://github.com/snower0428/LHProjects.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>LHDemo/LHDemo.xcodeproj</string>
+	<string>LHDemo/LHDemo.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>06469E7924A0D40D8DA1C3651E5CBDB044DDEDB9</key>

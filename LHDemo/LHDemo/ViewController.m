@@ -17,6 +17,7 @@
 #import "GIFViewController.h"
 #import "KeychainDemoViewCtrl.h"
 #import "BlockDemoViewController.h"
+#import "AFNetworkingViewController.h"
 
 @interface ViewController ()
 {
@@ -51,6 +52,7 @@
 				  @"GIF",
 				  @"Keychain",
 				  @"Block",
+				  @"AFNetworking",
                   nil];
     
     _arrayViewController = [[NSArray alloc] initWithObjects:
@@ -68,6 +70,7 @@
 							@"GIFViewController",
 							@"KeychainDemoViewCtrl",
 							@"BlockDemoViewController",
+							@"AFNetworkingViewController",
                             nil];
     
     [self initTableView];
