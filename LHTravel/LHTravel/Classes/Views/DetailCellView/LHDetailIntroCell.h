@@ -8,6 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LHDetailIntroCelllDelegate;
+
 @interface LHDetailIntroCell : UIView
+
+@property (nonatomic, assign) id<LHDetailIntroCelllDelegate> delegate;
+
+- (void)updateIntoWithText:(NSString *)strText;
+- (void)updateCallWithText:(NSString *)strText;
+
+@end
+
+#pragma mark - LHDetailIntroCelllDelegate
+
+@protocol LHDetailIntroCelllDelegate <NSObject>
+
+- (void)phoneCallDidSelected;
 
 @end

@@ -14,12 +14,21 @@
 {
 	self = [super initWithFrame:frame];
 	if (self) {
-		CGFloat height = frame.size.height/2;
+        self.backgroundColor = RGB(196, 196, 196);
+        
+        CGFloat topMargin = 5.f;
+        CGRect rect = CGRectMake(0.f, 5.f, frame.size.width, frame.size.height - topMargin);
+        
+        UIView *containerView = [[[UIView alloc] initWithFrame:rect] autorelease];
+        containerView.backgroundColor = [UIColor whiteColor];
+        [self addSubview:containerView];
+        
+		CGFloat height = containerView.frame.size.height/2;
 		
 		// Address
 		NSString *strText = @"地址：福州市鼓楼区铜盘路软件大道89号";
 		NSMutableAttributedString *strAttributedText = [[[NSMutableAttributedString alloc] initWithString:strText] autorelease];
-		CGRect rect = CGRectMake(10.f, 0.f, 250.f, height);
+		rect = CGRectMake(10.f, 0.f, 250.f, height);
 		
 		NSDictionary *dictTitle = @{NSForegroundColorAttributeName: [UIColor blackColor],
 									NSFontAttributeName: [UIFont boldSystemFontOfSize:14.f]};
@@ -34,7 +43,7 @@
 		
 		UILabel *lbAddress = [[[UILabel alloc] initWithFrame:rect] autorelease];
 		lbAddress.attributedText = strAttributedText;
-		[self addSubview:lbAddress];
+		[containerView addSubview:lbAddress];
 		
 		// Open time
 		strText = @"开放时间：8:00~22:00";
@@ -50,7 +59,7 @@
 		
 		UILabel *lbTime = [[[UILabel alloc] initWithFrame:rect] autorelease];
 		lbTime.attributedText = strAttributedText;
-		[self addSubview:lbTime];
+		[containerView addSubview:lbTime];
 		
 		// Button
 		CGFloat btnSize = 30.f;
@@ -60,7 +69,7 @@
 		btnGo.backgroundColor = [UIColor grayColor];
 		btnGo.frame = rect;
 		btnGo.layer.cornerRadius = btnSize/2;
-		[self addSubview:btnGo];
+		[containerView addSubview:btnGo];
 		[btnGo addTarget:self action:@selector(btnGoAction:) forControlEvents:UIControlEventTouchUpInside];
 	}
 	

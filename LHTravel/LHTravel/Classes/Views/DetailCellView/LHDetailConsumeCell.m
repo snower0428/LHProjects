@@ -14,12 +14,21 @@
 {
 	self = [super initWithFrame:frame];
 	if (self) {
-		CGFloat height = frame.size.height/2;
+        self.backgroundColor = RGB(196, 196, 196);
+        
+        CGFloat topMargin = 5.f;
+        CGRect rect = CGRectMake(0.f, 5.f, frame.size.width, frame.size.height - topMargin);
+        
+        UIView *containerView = [[[UIView alloc] initWithFrame:rect] autorelease];
+        containerView.backgroundColor = [UIColor whiteColor];
+        [self addSubview:containerView];
+        
+		CGFloat height = frame.size.height;
 		
 		// 人均
 		NSString *strText = @"人均\n45元";
 		NSMutableAttributedString *strAttributedText = [[[NSMutableAttributedString alloc] initWithString:strText] autorelease];
-		CGRect rect = CGRectMake(10.f, 0.f, 50.f, height);
+		rect = CGRectMake(10.f, 0.f, 50.f, height);
 		
 		NSDictionary *dictTitle = @{NSForegroundColorAttributeName: [UIColor blackColor],
 									NSFontAttributeName: [UIFont boldSystemFontOfSize:14.f]};
@@ -35,13 +44,13 @@
 		UILabel *lbConsume = [[[UILabel alloc] initWithFrame:rect] autorelease];
 		lbConsume.attributedText = strAttributedText;
 		lbConsume.numberOfLines = 2;
-		[self addSubview:lbConsume];
+		[containerView addSubview:lbConsume];
 		
 		// 特色项目
-		rect = CGRectMake(rect.origin.x+rect.size.width+10.f, 0, 100.f, rect.size.height);
+		rect = CGRectMake(rect.origin.x+rect.size.width+10.f, 0, 100.f, frame.size.height);
 		
 		UILabel *lbProject = [UILabel labelWithName:@"特色项目" font:[UIFont boldSystemFontOfSize:14.f] frame:rect color:[UIColor blackColor]];
-		[self addSubview:lbProject];
+		[containerView addSubview:lbProject];
 		
 		CGFloat btnSize = 30.f;
 		CGFloat btnInterval = 5.f;
@@ -52,7 +61,7 @@
 			button.backgroundColor = [UIColor grayColor];
 			button.frame = rect;
 			button.layer.cornerRadius = btnSize/2;
-			[self addSubview:button];
+			[containerView addSubview:button];
 			[button addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
 		}
 	}
