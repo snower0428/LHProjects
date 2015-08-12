@@ -44,6 +44,8 @@
 		799472CF1B1C656100FD6211 /* LHDetailConsumeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799472CE1B1C656100FD6211 /* LHDetailConsumeCell.m */; };
 		799472D21B1C658D00FD6211 /* LHDetailIntroCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799472D11B1C658D00FD6211 /* LHDetailIntroCell.m */; };
 		799472D51B1C65EF00FD6211 /* LHDetailCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799472D41B1C65EF00FD6211 /* LHDetailCommentCell.m */; };
+		79A382901B27D77C00DAAB36 /* PHDynamicViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A3828F1B27D77C00DAAB36 /* PHDynamicViewCtrl.m */; };
+		79A382A21B27DD6000DAAB36 /* PHDynamicCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A382A11B27DD6000DAAB36 /* PHDynamicCellView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +137,10 @@
 		799472D11B1C658D00FD6211 /* LHDetailIntroCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHDetailIntroCell.m; sourceTree = "<group>"; };
 		799472D31B1C65EF00FD6211 /* LHDetailCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHDetailCommentCell.h; sourceTree = "<group>"; };
 		799472D41B1C65EF00FD6211 /* LHDetailCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHDetailCommentCell.m; sourceTree = "<group>"; };
+		79A3828E1B27D77C00DAAB36 /* PHDynamicViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHDynamicViewCtrl.h; sourceTree = "<group>"; };
+		79A3828F1B27D77C00DAAB36 /* PHDynamicViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHDynamicViewCtrl.m; sourceTree = "<group>"; };
+		79A382A01B27DD6000DAAB36 /* PHDynamicCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PHDynamicCellView.h; sourceTree = "<group>"; };
+		79A382A11B27DD6000DAAB36 /* PHDynamicCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PHDynamicCellView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +204,7 @@
 		790085801B0344700026C1EE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				79A3828D1B27D76700DAAB36 /* PHDynamic */,
 				790085811B0344700026C1EE /* ViewController.h */,
 				790085821B0344700026C1EE /* ViewController.m */,
 				790085C91B0360DE0026C1EE /* LHHomeViewController.h */,
@@ -215,6 +222,7 @@
 		790085831B0344700026C1EE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				79A3829F1B27D8F600DAAB36 /* PHDynamic */,
 				799472C91B1C617400FD6211 /* DetailCellView */,
 				796EC75B1B04C68E009579D8 /* PagePhotos */,
 				7986A0641B12F82600AAA02E /* LHTravelCellView.h */,
@@ -377,6 +385,24 @@
 			path = DetailCellView;
 			sourceTree = "<group>";
 		};
+		79A3828D1B27D76700DAAB36 /* PHDynamic */ = {
+			isa = PBXGroup;
+			children = (
+				79A3828E1B27D77C00DAAB36 /* PHDynamicViewCtrl.h */,
+				79A3828F1B27D77C00DAAB36 /* PHDynamicViewCtrl.m */,
+			);
+			path = PHDynamic;
+			sourceTree = "<group>";
+		};
+		79A3829F1B27D8F600DAAB36 /* PHDynamic */ = {
+			isa = PBXGroup;
+			children = (
+				79A382A01B27DD6000DAAB36 /* PHDynamicCellView.h */,
+				79A382A11B27DD6000DAAB36 /* PHDynamicCellView.m */,
+			);
+			path = PHDynamic;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -499,6 +525,7 @@
 				798F38821B09F59A0023A506 /* SDImageCache.m in Sources */,
 				790085D11B0360FB0026C1EE /* LHMineViewController.m in Sources */,
 				790085AD1B0351C10026C1EE /* LHTabController.m in Sources */,
+				79A382A21B27DD6000DAAB36 /* PHDynamicCellView.m in Sources */,
 				796EC7651B04C736009579D8 /* TouchView.m in Sources */,
 				798F38881B09F59A0023A506 /* UIImageView+WebCache.m in Sources */,
 				799472CC1B1C652000FD6211 /* LHDetailAddressCell.m in Sources */,
@@ -508,6 +535,7 @@
 				798F38841B09F59A0023A506 /* SDWebImageDownloader.m in Sources */,
 				7986A0661B12F82600AAA02E /* LHTravelCellView.m in Sources */,
 				790085CB1B0360DE0026C1EE /* LHHomeViewController.m in Sources */,
+				79A382901B27D77C00DAAB36 /* PHDynamicViewCtrl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

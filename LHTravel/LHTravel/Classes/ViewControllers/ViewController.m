@@ -10,6 +10,7 @@
 #import "LHHomeViewController.h"
 #import "LHSpecialViewController.h"
 #import "LHMineViewController.h"
+#import "PHDynamicViewCtrl.h"
 
 @interface ViewController ()
 
@@ -22,7 +23,7 @@
 	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 	
-	self.view.backgroundColor = [UIColor orangeColor];
+	self.view.backgroundColor = [UIColor whiteColor];
 	
 	if (SYSTEM_VERSION >= 7.0) {
 		if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
@@ -50,7 +51,8 @@
 
 - (void)initControllers
 {
-	NSArray *arrayCtrlName = @[@"LHHomeViewController", @"LHSpecialViewController", @"LHMineViewController"];
+	//NSArray *arrayCtrlName = @[@"LHHomeViewController", @"LHSpecialViewController", @"LHMineViewController"];
+	NSArray *arrayCtrlName = @[@"PHDynamicViewCtrl", @"LHSpecialViewController", @"LHMineViewController"];
 	NSArray *arrayTitle = @[@"首页", @"特别的", @"我的"];
 	NSArray *arrayImageName = @[@"TabBar/Home.png", @"TabBar/Special.png", @"TabBar/Mine.png"];
 	NSMutableArray *arrayImage = [NSMutableArray array];

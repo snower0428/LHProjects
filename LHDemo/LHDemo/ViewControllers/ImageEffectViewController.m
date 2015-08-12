@@ -60,7 +60,7 @@
     CGFloat height = 30;
     CGFloat interval = 10;
     
-    _image = [[UIImage imageNamed:@"test.png"] retain];
+    _image = [[UIImage imageNamed:@"icon.png"] retain];
     UIImage *image = [_image applyBlurWithRadius:_radius tintColor:[UIColor colorWithWhite:1.0 alpha:_alpha] saturationDeltaFactor:_saturationDeltaFactor maskImage:nil];
     
     _backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, kTopShift, SCREEN_WIDTH, SCREEN_HEIGHT)];

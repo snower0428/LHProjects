@@ -18,6 +18,8 @@
 #import "KeychainDemoViewCtrl.h"
 #import "BlockDemoViewController.h"
 #import "AFNetworkingViewController.h"
+#import "AutoCaptureViewController.h"
+#import "PopDemoViewController.h"
 
 @interface ViewController ()
 {
@@ -38,6 +40,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     _arrayName = [[NSArray alloc] initWithObjects:
+#if 1
                   @"Demo",
 //                  @"Motion",
 //                  @"Core Image",
@@ -53,9 +56,14 @@
 				  @"Keychain",
 				  @"Block",
 				  @"AFNetworking",
+				  @"Pop",
+#else
+				  @"Capture",
+#endif
                   nil];
     
     _arrayViewController = [[NSArray alloc] initWithObjects:
+#if 1
                             @"DemoViewController",
 //                            @"MotionViewController",
 //                            @"LHCoreImageViewController",
@@ -71,6 +79,10 @@
 							@"KeychainDemoViewCtrl",
 							@"BlockDemoViewController",
 							@"AFNetworkingViewController",
+							@"PopDemoViewController",
+#else
+							@"AutoCaptureViewController",
+#endif
                             nil];
     
     [self initTableView];
