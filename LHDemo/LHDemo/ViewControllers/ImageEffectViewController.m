@@ -47,10 +47,6 @@
     
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:light, extraLight, dark, color, nil];
     
-    [light release];
-    [extraLight release];
-    [dark release];
-    
     _radius = 5.0;
     _alpha = 0.2;
     _saturationDeltaFactor = 1.8;
@@ -60,7 +56,7 @@
     CGFloat height = 30;
     CGFloat interval = 10;
     
-    _image = [[UIImage imageNamed:@"icon.png"] retain];
+    _image = [UIImage imageNamed:@"icon.png"];
     UIImage *image = [_image applyBlurWithRadius:_radius tintColor:[UIColor colorWithWhite:1.0 alpha:_alpha] saturationDeltaFactor:_saturationDeltaFactor maskImage:nil];
     
     _backgroundView = [[UIImageView alloc] initWithFrame:CGRectMake(0, kTopShift, SCREEN_WIDTH, SCREEN_HEIGHT)];
@@ -141,19 +137,6 @@
     }
     UIImage *image = [_image applyBlurWithRadius:_radius tintColor:[UIColor colorWithWhite:1.0 alpha:_alpha] saturationDeltaFactor:_saturationDeltaFactor maskImage:nil];
     _backgroundView.image = image;
-}
-
-#pragma mark - dealloc
-
-- (void)dealloc
-{
-    [_image release];
-    [_backgroundView release];
-    [_sliderRadius release];
-    [_sliderAlpha release];
-    [_sliderSaturationDeltaFactor release];
-    
-    [super dealloc];
 }
 
 @end

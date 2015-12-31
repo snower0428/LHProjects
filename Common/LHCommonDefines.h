@@ -48,6 +48,7 @@
 
 #define RGB(r, g, b)            [UIColor colorWithRed:(float)(r)/255.f green:(float)(g)/255.f blue:(float)(b)/255.f alpha:1.0f]
 #define RGBA(r, g, b, a)        [UIColor colorWithRed:(float)(r)/255.f green:(float)(g)/255.f blue:(float)(b)/255.f alpha:a]
+#define kRandomColor			[UIColor colorWithRed:(float)(arc4random()%256)/255.0 green:(float)(arc4random()%256)/255.0 blue:(float)(arc4random()%256)/255.0 alpha:1.0]
 
 #ifdef __IPHONE_6_0
 	#define UITextAlignment                 NSTextAlignment

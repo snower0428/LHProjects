@@ -48,7 +48,7 @@
 - (void)startTimer
 {
 	if (_timer == nil) {
-		_timer = [[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(onTimer) userInfo:nil repeats:YES] retain];
+		_timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
 	}
 }
 
@@ -56,7 +56,6 @@
 {
 	if (_timer) {
 		[_timer invalidate];
-		[_timer release];
 		_timer = nil;
 	}
 }
@@ -103,11 +102,6 @@
 - (void)dealloc
 {
 	[self stopTimer];
-	
-	[_imageView release];
-	[_array release];
-	
-	[super dealloc];
 }
 
 @end

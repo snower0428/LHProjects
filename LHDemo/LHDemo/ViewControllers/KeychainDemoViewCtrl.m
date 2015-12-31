@@ -27,14 +27,14 @@
 	CGRect frame = CGRectMake(leftMargin, 100, self.view.frame.size.width-leftMargin*2, 40.f);
 	
 	// UserName
-	UITextField *textFieldUserName = [[[UITextField alloc] initWithFrame:frame] autorelease];
+	UITextField *textFieldUserName = [[UITextField alloc] initWithFrame:frame];
 	textFieldUserName.placeholder = @"Input UserName";
 	[self.view addSubview:textFieldUserName];
 	
 	frame.origin.y = frame.origin.y + frame.size.height + 10.f;
 	
 	// Password
-	UITextField *textFieldPassword = [[[UITextField alloc] initWithFrame:frame] autorelease];
+	UITextField *textFieldPassword = [[UITextField alloc] initWithFrame:frame];
 	textFieldPassword.placeholder = @"Input Password";
 	[self.view addSubview:textFieldPassword];
 	
@@ -61,13 +61,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - dealloc
-
-- (void)dealloc
-{
-	[super dealloc];
 }
 
 @end

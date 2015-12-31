@@ -92,10 +92,8 @@ void autoDictionarySetter(id self, SEL _cmd, id value)
 - (void)dealloc
 {
 	if (_backingStore) {
-		[_backingStore release];
 		_backingStore = nil;
 	}
-	[super dealloc];
 }
 
 @end

@@ -13,14 +13,14 @@
 #import <objc/runtime.h>
 
 #import "WiFiScanner.h"
-
 #import "KeychainDemoViewCtrl.h"
-
 #import "EOCAutoDictionary.h"
-
 #import "PHNetworkManager.h"
-
 #import "TestViewController.h"
+#import "iCarousel.h"
+#import "PTVerticalLabel.h"
+
+#import <QuartzCore/QuartzCore.h>
 
 @implementation NSString (MyLower)
 
@@ -40,12 +40,15 @@ int (*funcptr)(int) = &func;
 
 @end
 
-@interface DemoViewController ()
+@interface DemoViewController () <iCarouselDataSource, iCarouselDelegate>
 {
 	NSTimer			*_timer;
 }
 
 @property (nonatomic, retain) UINavigationController *navCtrl;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, assign) NSInteger pageIndex;
+@property (nonatomic, strong) iCarousel *carousel;
 
 @end
 
@@ -81,7 +84,13 @@ int (*funcptr)(int) = &func;
 	// Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
+	
+	if (SYSTEM_VERSION >= 7.0) {
+		if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+			[self setEdgesForExtendedLayout:UIRectEdgeNone];
+		}
+	}
+	
 #if 0
     // Gradient progress demo
     GradientView *view = [[GradientView alloc] initWithFrame:CGRectMake(10, 100, 300, 300)];
@@ -90,7 +99,7 @@ int (*funcptr)(int) = &func;
     [view release];
 #endif
     
-#if 1
+#if 0
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
 	button.backgroundColor = [UIColor blueColor];
     button.frame = CGRectMake(20, 100, self.view.frame.size.width-20*2, 100);
@@ -106,9 +115,67 @@ int (*funcptr)(int) = &func;
 	
 	[self initNavigationItem];
 	
-	[self comparaBlock2];
+//	[self comparaBlock2];
 	
 //	[self startTimer];
+	
+#if 0
+	_pageIndex = 0;
+	self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 180, SCREEN_WIDTH, 190)];
+	[_scrollView setContentSize:CGSizeMake(480, 190)];
+	_scrollView.contentInset = UIEdgeInsetsMake(0, 80, 0, 80);
+	_scrollView.pagingEnabled = NO;
+	_scrollView.delegate = self;
+	[self.view addSubview:_scrollView];
+	
+	for (NSInteger i = 0; i < 3; i++) {
+		CGRect frame = CGRectMake(i*160, 0, 160, 190);
+		
+		UIView *view = [[UIView alloc] initWithFrame:frame];
+		view.backgroundColor = kRandomColor;
+		[_scrollView addSubview:view];
+	}
+#endif
+	
+#if 0
+	self.carousel = [[iCarousel alloc] initWithFrame:CGRectMake(0, 80, SCREEN_WIDTH, 200)];
+	self.carousel.backgroundColor = [UIColor orangeColor];
+	self.carousel.dataSource = self;
+	self.carousel.delegate = self;
+	self.carousel.pagingEnabled = YES;
+	[self.view addSubview:self.carousel];
+#endif
+	
+#if 0
+	NSString* str = @"去年今日此门中，人面桃花相映红；人面不知何处去，桃花依旧笑春风。";
+	UIFont* font = [UIFont systemFontOfSize:14.f];
+	CGSize size = [str sizeWithFont:font constrainedToSize:CGSizeMake(25.0f, 460-44) lineBreakMode:NSLineBreakByWordWrapping];
+	NSLog(@"size.height=%f,%f",size.height,size.width);
+	NSMutableArray* array = [[NSMutableArray alloc]initWithCapacity:0];
+	
+	for (int i = 0; i < 4; i ++) {
+		NSString* substr=[str substringWithRange:NSMakeRange(i*8, 8)];
+		[array addObject:substr];
+	}
+	for (int i = 0;i < array.count; i++) {
+		UILabel* label = [[UILabel alloc]initWithFrame:CGRectMake(220-(size.width+15)*(i+1),10, size.width, size.height)];
+		label.text = [array objectAtIndex:i];
+		label.numberOfLines = 0;
+		label.font = font;
+		label.textColor = [UIColor purpleColor];
+		label.backgroundColor = [UIColor clearColor];
+		label.shadowColor = [UIColor colorWithWhite:0.4 alpha:0.8];
+		label.shadowOffset = CGSizeMake(1.0f, 2.0f);
+		[self.view addSubview:label];
+	}
+#endif
+	
+	PTVerticalLabel *label = [[PTVerticalLabel alloc] initWithFrame:CGRectMake(10, 10, 100, 300)];
+	label.backgroundColor = [UIColor orangeColor];
+	label.text = @"测试竖直排列文字！";
+//	label.text = @"去年今日此门中，人面桃花相映红；人面不知何处去，桃花依旧笑春风。";
+	label.textAlignment = PTVerticalTextAlignmentCenter;
+	[self.view addSubview:label];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -122,13 +189,32 @@ int (*funcptr)(int) = &func;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+	NSInteger pageWidth = 160;
+	NSInteger pageX = _pageIndex*pageWidth-scrollView.contentInset.left;
+	if (targetContentOffset->x < pageX) {
+		if (_pageIndex > 0) {
+			_pageIndex--;
+		}
+	}
+	else if (targetContentOffset->x > pageX) {
+		if (_pageIndex < 3) {
+			_pageIndex++;
+		}
+	}
+	targetContentOffset->x = _pageIndex*pageWidth - scrollView.contentInset.left;
+	NSLog(@"%d ----- %d", (int)_pageIndex, (int)targetContentOffset->x);
+}
+
 #pragma mark - Pirvate
 
 - (void)initNavigationItem
 {
 	UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(btnClicked:)];
 	self.navigationItem.rightBarButtonItem = rightItem;
-	[rightItem release];
 }
 
 - (void)btnClicked:(id)sender
@@ -232,6 +318,7 @@ int (*funcptr)(int) = &func;
 					 completion:nil];
 #endif
 	
+#if 0
 	Method originalMethod = class_getInstanceMethod([NSString class], @selector(lowercaseString));
 	Method swappedMethod = class_getInstanceMethod([NSString class], @selector(myLowercaseString));
 	method_exchangeImplementations(originalMethod, swappedMethod);
@@ -243,6 +330,7 @@ int (*funcptr)(int) = &func;
 	TestViewController *ctrl = [[[TestViewController alloc] init] autorelease];
 	UINavigationController *navCtrl = [[[UINavigationController alloc] initWithRootViewController:ctrl] autorelease];
 	[self presentViewController:navCtrl animated:YES completion:nil];
+#endif
 }
 
 - (void)comparaBlock
@@ -303,14 +391,13 @@ int (*funcptr)(int) = &func;
 {
 	[self stopTimer];
 	
-	_timer = [[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES] retain];
+	_timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
 }
 
 - (void)stopTimer
 {
 	if (_timer) {
 		[_timer invalidate];
-		[_timer release];
 		_timer = nil;
 	}
 }
@@ -321,6 +408,87 @@ int (*funcptr)(int) = &func;
 	NSLog(@"hasNetwork: %d", hasNetwork);
 }
 
+#pragma mark - iCarouselDataSource
+
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
+{
+	return 6;
+}
+
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(nullable UIView *)view
+{
+	UILabel *label = nil;
+	
+	//create new view if no view is available for recycling
+	if (view == nil)
+	{
+		CGFloat height = 100.f*iPhoneWidthScaleFactor;
+		view = [[UIImageView alloc] initWithFrame:CGRectMake(0, height/2, height, height)];
+		view.contentMode = UIViewContentModeCenter;
+		label = [[UILabel alloc] initWithFrame:view.bounds];
+		label.backgroundColor = [UIColor blueColor];
+		label.textAlignment = UITextAlignmentCenter;
+		label.font = [label.font fontWithSize:50];
+		label.tag = 1;
+		[view addSubview:label];
+	}
+	else
+	{
+		//get a reference to the label in the recycled view
+		label = (UILabel *)[view viewWithTag:1];
+	}
+	
+	//set item label
+	//remember to always set any properties of your carousel item
+	//views outside of the `if (view == nil) {...}` check otherwise
+	//you'll get weird issues with carousel item content appearing
+	//in the wrong place in the carousel
+	label.text = [NSString stringWithFormat:@"%d", (int)index];
+	
+	return view;
+}
+
+//- (NSInteger)numberOfPlaceholdersInCarousel:(iCarousel *)carousel;
+//- (UIView *)carousel:(iCarousel *)carousel placeholderViewAtIndex:(NSInteger)index reusingView:(nullable UIView *)view;
+
+#pragma mark - iCarouselDelegate
+
+- (CGFloat)carousel:(__unused iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
+{
+	//customize carousel display
+	switch (option)
+	{
+		case iCarouselOptionWrap:
+		{
+			//normally you would hard-code this to YES or NO
+			return NO;
+		}
+		case iCarouselOptionSpacing:
+		{
+			//add a bit of spacing between the item views
+			return value * 1.05f;
+		}
+		case iCarouselOptionFadeMax:
+		{
+			return value;
+		}
+		case iCarouselOptionShowBackfaces:
+		case iCarouselOptionRadius:
+		case iCarouselOptionAngle:
+		case iCarouselOptionArc:
+		case iCarouselOptionTilt:
+		case iCarouselOptionCount:
+		case iCarouselOptionFadeMin:
+		case iCarouselOptionFadeMinAlpha:
+		case iCarouselOptionFadeRange:
+		case iCarouselOptionOffsetMultiplier:
+		case iCarouselOptionVisibleItems:
+		{
+			return value;
+		}
+	}
+}
+
 #pragma mark - dealloc
 
 - (void)dealloc
@@ -328,8 +496,6 @@ int (*funcptr)(int) = &func;
 	[self stopTimer];
 	
 	self.navCtrl = nil;
-	
-    [super dealloc];
 }
 
 @end

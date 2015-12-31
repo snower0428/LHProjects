@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LHDemo/ViewControllers/DemoViewController.mm"
-            timestampString = "453370899.105164"
+            timestampString = "472475003.765915"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "385"
-            endingLineNumber = "385">
+            startingLineNumber = "561"
+            endingLineNumber = "561">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -33,20 +33,12 @@
     UIView *square = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
     square.backgroundColor = [UIColor grayColor];
     [self.view addSubview:square];
-    [square release];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - dealloc
-
-- (void)dealloc
-{
-    [super dealloc];
 }
 
 @end

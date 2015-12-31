@@ -46,9 +46,4 @@
     CGContextRestoreGState(ctx);
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
-
 @end

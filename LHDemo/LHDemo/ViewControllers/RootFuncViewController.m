@@ -90,11 +90,4 @@ typedef enum
 	NSLog(@"iOSREDebut reboot: %d", system("reboot"));
 }
 
-#pragma mark - dealloc
-
-- (void)dealloc
-{
-	[super dealloc];
-}
-
 @end

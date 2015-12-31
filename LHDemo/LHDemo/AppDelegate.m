@@ -19,21 +19,12 @@
 @synthesize montionManager = _motionManager;
 #endif
 
-- (void)dealloc
-{
-    [_window release];
-    [_viewController release];
-    [_navCtrl release];
-    
-    [super dealloc];
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 #if 1
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.viewController = [[[ViewController alloc] init] autorelease];
-    self.navCtrl = [[[UINavigationController alloc] initWithRootViewController:self.viewController] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.viewController = [[ViewController alloc] init];
+    self.navCtrl = [[UINavigationController alloc] initWithRootViewController:self.viewController];
     self.window.rootViewController = self.navCtrl;
     [self.window makeKeyAndVisible];
 #else

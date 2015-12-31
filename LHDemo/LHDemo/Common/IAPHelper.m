@@ -16,8 +16,8 @@
     RequestProductsCompletionHandler _completionHandler;
 }
 
-@property (nonatomic, retain) NSSet *productIdentifiers;
-@property (nonatomic, retain) NSMutableSet *purchasedProductIdentifiers;
+@property (nonatomic, strong) NSSet *productIdentifiers;
+@property (nonatomic, strong) NSMutableSet *purchasedProductIdentifiers;
 
 @end
 
@@ -64,7 +64,6 @@
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response
 {
     NSLog(@"Loaded list of products...");
-    [_productsRequest release];
     _productsRequest = nil;
     
     NSArray * skProducts = response.products;
@@ -78,18 +77,15 @@
     }
     
     _completionHandler(YES, skProducts);
-    [_completionHandler release];
     _completionHandler = nil;
 }
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error
 {
     NSLog(@"Failed to load list of products.");
-    [_productsRequest release];
     _productsRequest = nil;
     
     _completionHandler(NO, nil);
-    [_completionHandler release];
     _completionHandler = nil;
 }
 
@@ -98,8 +94,6 @@
 - (void)dealloc
 {
     self.productIdentifiers = nil;
-    
-    [super dealloc];
 }
 
 @end

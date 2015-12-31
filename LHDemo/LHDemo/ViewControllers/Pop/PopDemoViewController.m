@@ -90,7 +90,6 @@ NS_ENUM(NSInteger, ButtonType) {
 {
 	UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(rightAction:)];
 	self.navigationItem.rightBarButtonItem = rightItem;
-	[rightItem release];
 }
 
 - (void)rightAction:(id)sender
@@ -160,29 +159,19 @@ NS_ENUM(NSInteger, ButtonType) {
 	switch (btnTag) {
 		case ButtonTypeSpring:
 		{
-			PopSpringViewController *ctrl = [[[PopSpringViewController alloc] init] autorelease];
+			PopSpringViewController *ctrl = [[PopSpringViewController alloc] init];
 			[self.navigationController pushViewController:ctrl animated:YES];
 			break;
 		}
 		case ButtonTypeBasic:
 		{
-			PopBasicViewController *ctrl = [[[PopBasicViewController alloc] init] autorelease];
+			PopBasicViewController *ctrl = [[PopBasicViewController alloc] init];
 			[self.navigationController pushViewController:ctrl animated:YES];
 			break;
 		}
 		default:
 			break;
 	}
-}
-
-#pragma mark - dealloc
-
-- (void)dealloc
-{
-	[_imageView release];
-	[_label release];
-	
-	[super dealloc];
 }
 
 @end

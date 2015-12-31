@@ -42,11 +42,4 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(PHNetworkManager)
     return (isReachable && !needsConnection) ? YES : NO;
 }
 
-#pragma mark - dealloc
-
-- (void)dealloc
-{
-    [super dealloc];
-}
-
 @end

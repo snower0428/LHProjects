@@ -18,9 +18,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ResourcesManager)
 
 -(void)dealloc
 {
-	[m_defaultSkinPath release];
     m_defaultSkinPath = nil;
-	[super dealloc];
 }
 
 - (NSString *)getiPhone5FileName:(NSString *)name

@@ -40,7 +40,7 @@
 	CGFloat topMargin = (self.view.frame.size.height - imageHeight)/2;
 	
 	CGRect frame = CGRectMake(leftMargin, topMargin, imageWidth, imageHeight);
-	UIImageView *imageView = [[[UIImageView alloc] initWithFrame:frame] autorelease];
+	UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
 	imageView.image = image;
 	[self.view addSubview:imageView];
 }
@@ -53,13 +53,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
-}
-
-#pragma mark - dealloc
-
-- (void)dealloc
-{
-	[super dealloc];
 }
 
 @end

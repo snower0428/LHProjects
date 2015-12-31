@@ -44,7 +44,7 @@
 //    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
 //    CMMotionActivityManager *motionManager = [appDelegate montionManager];
     
-    UITextView *textView = [[[UITextView alloc] initWithFrame:self.view.bounds] autorelease];
+    UITextView *textView = [[UITextView alloc] initWithFrame:self.view.bounds];
     textView.backgroundColor = [UIColor grayColor];
     textView.textColor = [UIColor blackColor];
     textView.font = [UIFont systemFontOfSize:12];
@@ -57,7 +57,7 @@
     _stepQueue = [[NSOperationQueue alloc] init];
     
     // 日期
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     NSDate *fromeDate = [formatter dateFromString:@"2013-09-23"];
     
@@ -162,14 +162,7 @@
 #ifdef __IPHONE_7_0
     [_motionManager stopActivityUpdates];
     [_stepCounter stopStepCountingUpdates];
-    
-    [_motionManager release];
-    [_motionQueue release];
-    [_stepCounter release];
-    [_stepQueue release];
 #endif
-    
-    [super dealloc];
 }
 
 @end

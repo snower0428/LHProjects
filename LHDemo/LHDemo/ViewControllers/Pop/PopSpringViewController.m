@@ -57,7 +57,6 @@
 {
 	UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(rightAction:)];
 	self.navigationItem.rightBarButtonItem = rightItem;
-	[rightItem release];
 }
 
 - (void)rightAction:(id)sender
@@ -82,7 +81,7 @@
 	[_imageView.layer pop_addAnimation:animation forKey:@"ChangeSize"];
 #endif
 	
-#if 1
+#if 0
 	POPSpringAnimation *animation = [POPSpringAnimation animationWithPropertyNamed:kPOPLayerPosition];
 	
 	_bChanged = !_bChanged;
@@ -101,15 +100,6 @@
 	
 	[_imageView.layer pop_addAnimation:animation forKey:@"ChangePosition"];
 #endif
-}
-
-#pragma mark - dealloc
-
-- (void)dealloc
-{
-	[_imageView release];
-	
-	[super dealloc];
 }
 
 @end

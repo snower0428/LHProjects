@@ -20,7 +20,7 @@
 	self.view.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.3];
 	[self.navigationController.view setBackgroundColor:[UIColor colorWithWhite:1.0 alpha:0.3]];
 	
-	UIBarButtonItem *leftItem = [[[UIBarButtonItem alloc] initWithTitle:@"<-" style:UIBarButtonItemStylePlain target:self action:@selector(onBack:)] autorelease];
+	UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithTitle:@"<-" style:UIBarButtonItemStylePlain target:self action:@selector(onBack:)];
 	self.navigationItem.leftBarButtonItem = leftItem;
 }
 
@@ -32,13 +32,6 @@
 - (void)onBack:(id)sender
 {
 	[self dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - dealloc
-
-- (void)dealloc
-{
-	[super dealloc];
 }
 
 @end

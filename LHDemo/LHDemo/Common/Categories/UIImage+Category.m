@@ -223,8 +223,8 @@
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSURL *url = [NSURL URLWithString:urlString];
-        NSData *data = [[[NSData alloc] initWithContentsOfURL:url] autorelease];
-        UIImage *image = [[[UIImage alloc] initWithData:data] autorelease];
+        NSData *data = [[NSData alloc] initWithContentsOfURL:url];
+        UIImage *image = [[UIImage alloc] initWithData:data];
         if (data != nil && image != nil) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [image writeToFile:path atomically:YES];

@@ -20,6 +20,10 @@
 #import "AFNetworkingViewController.h"
 #import "AutoCaptureViewController.h"
 #import "PopDemoViewController.h"
+#import "LHCardCollectionViewController.h"
+#import "LHWaterfallViewController.h"
+#import "JDFPeekabooCoordinator.h"
+#import "PushPopCollectionViewController.h"
 
 @interface ViewController ()
 {
@@ -27,6 +31,9 @@
     NSArray         *_arrayName;
     NSArray         *_arrayViewController;
 }
+
+// Peekaboo
+@property (nonatomic, strong) JDFPeekabooCoordinator *scrollCoordinator;
 
 @end
 
@@ -36,8 +43,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
+	
+	self.title = @"Demo";
     self.view.backgroundColor = [UIColor whiteColor];
+	
+	if (SYSTEM_VERSION >= 7.0) {
+		if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+			[self setEdgesForExtendedLayout:UIRectEdgeNone];
+		}
+	}
     
     _arrayName = [[NSArray alloc] initWithObjects:
 #if 1
@@ -57,9 +71,12 @@
 				  @"Block",
 				  @"AFNetworking",
 				  @"Pop",
+				  @"CardCollection",
+				  @"Waterfall",
 #else
 				  @"Capture",
 #endif
+				  @"Collection",
                   nil];
     
     _arrayViewController = [[NSArray alloc] initWithObjects:
@@ -80,12 +97,22 @@
 							@"BlockDemoViewController",
 							@"AFNetworkingViewController",
 							@"PopDemoViewController",
+							@"LHCardCollectionViewController",
+							@"LHWaterfallViewController",
 #else
 							@"AutoCaptureViewController",
 #endif
+							@"PushPopCollectionViewController",
                             nil];
     
     [self initTableView];
+	
+#if 0
+	self.scrollCoordinator = [[JDFPeekabooCoordinator alloc] init];
+	self.scrollCoordinator.scrollView = _tableView;
+	self.scrollCoordinator.topView = self.navigationController.navigationBar;
+	self.scrollCoordinator.topViewMinimisedHeight = 20.0f;
+#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -186,20 +213,18 @@
         
         if ([strClass isEqualToString:@"ABNewPersonViewController"])
         {
-            UIBarButtonItem *leftItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)] autorelease];
+            UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(onBack:)];
             
             UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:[[ABAddressBook sharedAddressBook] viewControllerForNewPerson]];
             navCtrl.navigationItem.leftBarButtonItem = leftItem;
 			[self presentViewController:navCtrl animated:YES completion:nil];
-            
-            [navCtrl release];
-        }
+		}
         else if ([strClass isEqualToString:@"SKStoreProductViewController"]) {
             [self openAppWithId:@"688692382"];
         }
         else
         {
-            UIViewController *ctrl = [[[object alloc] init] autorelease];
+            UIViewController *ctrl = [[object alloc] init];
             [self.navigationController pushViewController:ctrl animated:YES];
         }
     }
@@ -227,7 +252,7 @@
     static NSString *cellIdentifier = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
@@ -236,17 +261,6 @@
     }
     
     return cell;
-}
-
-#pragma mark - dealloc
-
-- (void)dealloc
-{
-    [_tableView release];
-    [_arrayName release];
-    [_arrayViewController release];
-    
-    [super dealloc];
 }
 
 @end

@@ -30,7 +30,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIBarButtonItem *rightItem1 = [[[UIBarButtonItem alloc] initWithTitle:@"Button1" style:UIBarButtonItemStyleBordered target:self action:@selector(action1:)] autorelease];
+    UIBarButtonItem *rightItem1 = [[UIBarButtonItem alloc] initWithTitle:@"Button1" style:UIBarButtonItemStyleBordered target:self action:@selector(action1:)];
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:rightItem1, nil];
     
     _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 213)];
@@ -41,15 +41,14 @@
     UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(20, 250, self.view.frame.size.width-40, 50)];
     [slider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:slider];
-    [slider release];
-    
+	
     //
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"image" ofType:@"png"];
     NSURL *url = [NSURL fileURLWithPath:filePath];
     
-    _image = [[CIImage imageWithContentsOfURL:url] retain];
-    _context = [[CIContext contextWithOptions:nil] retain];
-    _filter = [[CIFilter filterWithName:@"CISepiaTone" keysAndValues:kCIInputImageKey, _image, @"inputIntensity", [NSNumber numberWithFloat:0.0], nil] retain];
+    _image = [CIImage imageWithContentsOfURL:url];
+    _context = [CIContext contextWithOptions:nil];
+    _filter = [CIFilter filterWithName:@"CISepiaTone" keysAndValues:kCIInputImageKey, _image, @"inputIntensity", [NSNumber numberWithFloat:0.0], nil];
     CIImage *outputImage = [_filter outputImage];
     
     CGImageRef imageRef = [_context createCGImage:outputImage fromRect:[outputImage extent]];
@@ -112,19 +111,6 @@
     _imageView.image = image;
     
     CGImageRelease(imageRef);
-}
-
-#pragma mark - dealloc
-
-- (void)dealloc
-{
-    [_imageView release];
-    
-    [_context release];
-    [_filter release];
-    [_image release];
-    
-    [super dealloc];
 }
 
 @end

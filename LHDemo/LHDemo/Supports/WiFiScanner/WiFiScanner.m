@@ -32,13 +32,11 @@
 	NSDictionary *parameters = [[NSDictionary alloc] init]; // 扫描参数，不填则获取所有信息
 	NSArray *scan_networks; // 存放扫描信息，每个对象均是一个NSDictionary
 	
-	apple80211Scan(airportHandle, &scan_networks, parameters); // 同步扫描
+	apple80211Scan(airportHandle, &scan_networks, (__bridge void *)parameters); // 同步扫描
 	for (id dictionary in scan_networks) {
 		if (dictionary) // 判断要连接哪一个热点
 			[self connectTo:dictionary withPassword:nil];
 	}
-	
-	[parameters release];
 }
 
 - (void)connectTo:(NSDictionary *)apInfo withPassword:(NSString *)password {
@@ -52,6 +50,5 @@
 - (void)dealloc {
 	apple80211Close(airportHandle);
 	dlclose(libHandle);
-	[super dealloc];
 }
 @end

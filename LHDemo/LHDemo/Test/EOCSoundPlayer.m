@@ -11,7 +11,7 @@
 
 void EOCSoundPlayerCompletion(SystemSoundID ssID, void *clientData)
 {
-	EOCSoundPlayer *player = (EOCSoundPlayer *)clientData;
+	EOCSoundPlayer *player = (__bridge EOCSoundPlayer *)clientData;
 	if ([player.delegate respondsToSelector:@selector(soundPlayerDidFinish:)]) {
 		[player.delegate soundPlayerDidFinish:player];
 	}
@@ -25,7 +25,7 @@ void EOCSoundPlayerCompletion(SystemSoundID ssID, void *clientData)
 - (id)initWithURL:(NSURL *)url
 {
 	if (self = [super init]) {
-		AudioServicesCreateSystemSoundID((CFURLRef)url, &_systemSoundID);
+		AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &_systemSoundID);
 	}
 	
 	return self;
@@ -33,7 +33,7 @@ void EOCSoundPlayerCompletion(SystemSoundID ssID, void *clientData)
 
 - (void)playSound
 {
-	AudioServicesAddSystemSoundCompletion(_systemSoundID, NULL, NULL, EOCSoundPlayerCompletion, (void *)self);
+	AudioServicesAddSystemSoundCompletion(_systemSoundID, NULL, NULL, EOCSoundPlayerCompletion, (__bridge void *)self);
 	AudioServicesPlaySystemSound(_systemSoundID);
 }
 
@@ -42,8 +42,6 @@ void EOCSoundPlayerCompletion(SystemSoundID ssID, void *clientData)
 - (void)dealloc
 {
 	AudioServicesDisposeSystemSoundID(_systemSoundID);
-	
-	[super dealloc];
 }
 
 @end

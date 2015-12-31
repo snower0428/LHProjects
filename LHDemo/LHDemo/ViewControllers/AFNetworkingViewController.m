@@ -53,11 +53,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - dealloc
-
-- (void)dealloc
-{
-	[super dealloc];
-}
-
 @end

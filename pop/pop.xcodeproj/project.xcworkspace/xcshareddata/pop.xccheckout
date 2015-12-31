@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9CDA1A91-2C6A-4645-B3E4-96BB9E89B1A7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>06469E7924A0D40D8DA1C3651E5CBDB044DDEDB9</key>
+		<string>https://github.com/snower0428/LHProjects.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>pop/pop.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>06469E7924A0D40D8DA1C3651E5CBDB044DDEDB9</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/snower0428/LHProjects.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>06469E7924A0D40D8DA1C3651E5CBDB044DDEDB9</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>06469E7924A0D40D8DA1C3651E5CBDB044DDEDB9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>LHProjects</string>
+		</dict>
+	</array>
+</dict>
+</plist>

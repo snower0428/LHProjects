@@ -15,13 +15,13 @@ static NSString *KEY_UIBUTTON_BLOCK = @"UIBUTTON_BLOCK_KEY";
 
 - (void)handleControlEvents:(UIControlEvents)controlEvents withBlock:(ButtonBlock)block
 {
-    objc_setAssociatedObject(self, KEY_UIBUTTON_BLOCK, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, (__bridge const void *)(KEY_UIBUTTON_BLOCK), block, OBJC_ASSOCIATION_COPY_NONATOMIC);
     [self addTarget:self action:@selector(invokeBlock) forControlEvents:controlEvents];
 }
 
 - (void)invokeBlock
 {
-    ButtonBlock block = objc_getAssociatedObject(self, KEY_UIBUTTON_BLOCK);
+    ButtonBlock block = objc_getAssociatedObject(self, (__bridge const void *)(KEY_UIBUTTON_BLOCK));
     if (block) {
         block();
     }
