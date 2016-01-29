@@ -19,8 +19,21 @@
 #import "TestViewController.h"
 #import "iCarousel.h"
 #import "PTVerticalLabel.h"
+#import "PTImageButton.h"
+
+#import "FXBlurView.h"
 
 #import <QuartzCore/QuartzCore.h>
+
+NSComparator comparator = ^(id obj1, id obj2) {
+	if ([obj1 integerValue] > [obj2 integerValue]) {
+		return (NSComparisonResult)NSOrderedDescending;
+	}
+	if ([obj1 integerValue] < [obj2 integerValue]) {
+		return (NSComparisonResult)NSOrderedAscending;
+	}
+	return NSOrderedSame;
+};
 
 @implementation NSString (MyLower)
 
@@ -170,12 +183,154 @@ int (*funcptr)(int) = &func;
 	}
 #endif
 	
+#if 0
 	PTVerticalLabel *label = [[PTVerticalLabel alloc] initWithFrame:CGRectMake(10, 10, 100, 300)];
 	label.backgroundColor = [UIColor orangeColor];
 	label.text = @"测试竖直排列文字！";
 //	label.text = @"去年今日此门中，人面桃花相映红；人面不知何处去，桃花依旧笑春风。";
 	label.textAlignment = PTVerticalTextAlignmentCenter;
 	[self.view addSubview:label];
+#endif
+	
+#if 0
+	// NSArray排序
+	NSArray *sortArray = @[@"1",@"3",@"4",@"7",@"8",@"2",@"6",@"5",@"13",@"15",@"12",@"20",@"28",@""];
+	
+	// 排序前
+	NSMutableString *outputBefore = [[NSMutableString alloc] init];
+	for (NSString *str in sortArray) {
+		[outputBefore appendFormat:@"%@,", str];
+	}
+	NSLog(@"排序前：%@", outputBefore);
+	
+	// 排序后
+	NSArray *array = [sortArray sortedArrayUsingComparator:comparator];
+	
+	NSMutableString *outputAfter = [[NSMutableString alloc] init];
+	for (NSString *str in array) {
+		[outputAfter appendFormat:@"%@,", str];
+	}
+	NSLog(@"排序后：%@", outputAfter);
+#endif
+	
+#if 0
+	CGFloat btnWidth = 100.f;
+	CGFloat btnHeigh = 64.f;
+	CGFloat leftMargin = (SCREEN_WIDTH-btnWidth)/2;
+	CGFloat topMargin = 100.f;
+	CGFloat imageWidth = 24.f;
+	
+	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+	button.frame = CGRectMake(leftMargin, topMargin, btnWidth, btnHeigh);
+	button.backgroundColor = [UIColor orangeColor];
+	[button setImage:getResource(@"emoji.png") forState:UIControlStateNormal];
+	[button setTitle:@"表情" forState:UIControlStateNormal];
+	[self.view addSubview:button];
+	
+	CGSize titleSize = [button.titleLabel.text sizeWithFont:button.titleLabel.font];
+	button.titleEdgeInsets = UIEdgeInsetsMake(0, -imageWidth, 0, imageWidth);
+	button.imageEdgeInsets = UIEdgeInsetsMake(0, titleSize.width, 0, -titleSize.width);
+#endif
+	
+#if 0
+	CGFloat btnWidth = 150.f;
+	CGFloat btnHeigh = 64.f;
+	CGFloat leftMargin = (SCREEN_WIDTH-btnWidth)/2;
+	CGFloat topMargin = 50.f;
+	CGFloat yInterval = 10.f;
+	
+	for (NSInteger i = 0; i < 4; i++) {
+		CGRect btnFrame = CGRectMake(leftMargin, topMargin+(btnHeigh+yInterval)*i, btnWidth, btnHeigh);
+		
+		PTImageButton *button = [PTImageButton buttonWithImage:getResource(@"emoji.png") title:@"表情键盘表情键盘"];
+		button.backgroundColor = [UIColor orangeColor];
+		button.frame = btnFrame;
+		button.imageButtonType = (PTImageButtonType)(PTImageButtonImageLeft+i);
+		//button.interval = 10.f;
+		//button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+		//button.imageSize = CGSizeMake(24.f, 24.f);
+		button.titleFont = [UIFont systemFontOfSize:12.f];
+		[self.view addSubview:button];
+	}
+#endif
+	
+#if 0
+	UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+	imageView.contentMode = UIViewContentModeScaleAspectFill;
+	imageView.image = [UIImage imageNamed:@"cat1.jpg"];
+	[self.view addSubview:imageView];
+	
+	CGFloat width = 200.f;
+	CGFloat height = 200.f;
+	CGFloat leftMargin = (self.view.frame.size.width-width)/2;
+	
+	FXBlurView *blurView = [[FXBlurView alloc] initWithFrame:CGRectMake(leftMargin, 100.f, width, height)];
+	blurView.tintColor = [UIColor blackColor];
+	blurView.blurRadius = 0;
+	[self.view addSubview:blurView];
+	
+	CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+	gradientLayer.frame = blurView.bounds;
+	gradientLayer.colors = @[(id)[UIColor whiteColor].CGColor, (id)[UIColor clearColor].CGColor];
+	[blurView.layer addSublayer:gradientLayer];
+#endif
+	
+#if 1
+	self.view.backgroundColor = RGB(60, 60, 65);
+	
+	CGFloat leftMargin = 5.f*iPhoneWidthScaleFactor;
+	CGFloat topMargin = 10.f*iPhoneWidthScaleFactor;
+	CGFloat width = 100.f*iPhoneWidthScaleFactor;
+	CGFloat height = 150.f*iPhoneWidthScaleFactor;
+	CGFloat xInterval = 5.f*iPhoneWidthScaleFactor;
+	
+	for (NSInteger i = 0; i < 3; i++) {
+		CGRect frame = CGRectMake(leftMargin+(width+xInterval)*i, topMargin, width, height);
+		NSString *imageName = [NSString stringWithFormat:@"cat%d.jpg", (int)i+1];
+		
+		UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+		//imageView.backgroundColor = [UIColor orangeColor];
+		imageView.image = [UIImage imageNamed:imageName];
+		imageView.contentMode = UIViewContentModeScaleAspectFill;
+		imageView.clipsToBounds = YES;
+		[self.view addSubview:imageView];
+		
+		for (NSInteger i = 0; i < 5; i++) {
+			CGFloat blurViewHeight = height/5;
+			FXBlurView *blurView = [[FXBlurView alloc] initWithFrame:CGRectMake(0, height-40.f+(blurViewHeight)*i, width, blurViewHeight)];
+			blurView.tintColor = [UIColor blackColor];
+			blurView.blurRadius = i*4+1;
+			[imageView addSubview:blurView];
+		}
+		
+		CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+		gradientLayer.frame = imageView.bounds;
+		gradientLayer.colors = @[(id)[UIColor clearColor].CGColor, (id)[UIColor whiteColor].CGColor];
+		gradientLayer.locations = @[@(0.3), @(1.0)];
+		[imageView.layer addSublayer:gradientLayer];
+	}
+#endif
+	
+#if 0
+	self.view.backgroundColor = RGB(60, 60, 65);
+	
+	
+	CGFloat topMargin = 100.f;
+	CGFloat width = 200.f;
+	CGFloat height = 200.f;
+	CGFloat leftMargin = (SCREEN_WIDTH-width)/2;
+	
+	UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+	imageView.image = [UIImage imageNamed:@"cat1.jpg"];
+	imageView.contentMode = UIViewContentModeScaleAspectFill;
+	[self.view addSubview:imageView];
+	
+	UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+	
+	UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+	blurView.frame = CGRectMake(leftMargin, topMargin, width, height);
+	[self.view addSubview:blurView];
+#endif
 }
 
 - (void)viewDidAppear:(BOOL)animated

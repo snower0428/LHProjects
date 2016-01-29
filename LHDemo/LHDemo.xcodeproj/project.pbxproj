@@ -11,8 +11,11 @@
 		7901F0611883B253001F2BFD /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7901F05F1883B253001F2BFD /* icon.png */; };
 		7901F0621883B253001F2BFD /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7901F0601883B253001F2BFD /* icon@2x.png */; };
 		79079C62183EF7030063E612 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79079C61183EF7030063E612 /* StoreKit.framework */; };
+		7916DFD11C59E2A9004041F4 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7916DFD01C59E2A9004041F4 /* FXBlurView.m */; };
 		791BE9FC185868AA009E706E /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 791BE9FB185868AA009E706E /* UIImage+ImageEffects.m */; };
 		791BE9FE18586901009E706E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 791BE9FD18586901009E706E /* Accelerate.framework */; };
+		791FA2D91C3E5CB8003D7BCA /* PTImageButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 791FA2D81C3E5CB8003D7BCA /* PTImageButton.m */; };
+		7922AB291C3FBA1B008A5F35 /* BetterFaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7922AB281C3FBA1B008A5F35 /* BetterFaceViewController.m */; };
 		7925870E17F036530062BB42 /* ABAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 792586FE17F036530062BB42 /* ABAddressBook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7925870F17F036530062BB42 /* ABAddressBookUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7925870017F036530062BB42 /* ABAddressBookUI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7925871017F036530062BB42 /* ABGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 7925870217F036530062BB42 /* ABGroup.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -199,9 +202,15 @@
 		7901F05F1883B253001F2BFD /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		7901F0601883B253001F2BFD /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		79079C61183EF7030063E612 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		7916DFCF1C59E2A9004041F4 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		7916DFD01C59E2A9004041F4 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		791BE9FA185868AA009E706E /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		791BE9FB185868AA009E706E /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		791BE9FD18586901009E706E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		791FA2D71C3E5CB8003D7BCA /* PTImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTImageButton.h; sourceTree = "<group>"; };
+		791FA2D81C3E5CB8003D7BCA /* PTImageButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTImageButton.m; sourceTree = "<group>"; };
+		7922AB271C3FBA1B008A5F35 /* BetterFaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetterFaceViewController.h; sourceTree = "<group>"; };
+		7922AB281C3FBA1B008A5F35 /* BetterFaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BetterFaceViewController.m; sourceTree = "<group>"; };
 		792586FD17F036530062BB42 /* ABAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABAddressBook.h; sourceTree = "<group>"; };
 		792586FE17F036530062BB42 /* ABAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABAddressBook.m; sourceTree = "<group>"; };
 		792586FF17F036530062BB42 /* ABAddressBookUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABAddressBookUI.h; sourceTree = "<group>"; };
@@ -446,9 +455,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7916DFCE1C59E2A9004041F4 /* FXBlurView */ = {
+			isa = PBXGroup;
+			children = (
+				7916DFCF1C59E2A9004041F4 /* FXBlurView.h */,
+				7916DFD01C59E2A9004041F4 /* FXBlurView.m */,
+			);
+			path = FXBlurView;
+			sourceTree = "<group>";
+		};
 		791BE9F8185868AA009E706E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7916DFCE1C59E2A9004041F4 /* FXBlurView */,
+				791FA2D21C3E5C9C003D7BCA /* PTImageButton */,
 				798219BD1C29534D00938E8E /* PTVerticalLabel */,
 				793472721C216BBD004C5AB6 /* iCarousel */,
 				795BE2F81BFC931100E08324 /* JDFPeekabooCoordinator */,
@@ -477,6 +497,24 @@
 				791BE9FB185868AA009E706E /* UIImage+ImageEffects.m */,
 			);
 			path = ImageEffect;
+			sourceTree = "<group>";
+		};
+		791FA2D21C3E5C9C003D7BCA /* PTImageButton */ = {
+			isa = PBXGroup;
+			children = (
+				791FA2D71C3E5CB8003D7BCA /* PTImageButton.h */,
+				791FA2D81C3E5CB8003D7BCA /* PTImageButton.m */,
+			);
+			path = PTImageButton;
+			sourceTree = "<group>";
+		};
+		7922AB221C3FB9E6008A5F35 /* BetterFace */ = {
+			isa = PBXGroup;
+			children = (
+				7922AB271C3FBA1B008A5F35 /* BetterFaceViewController.h */,
+				7922AB281C3FBA1B008A5F35 /* BetterFaceViewController.m */,
+			);
+			path = BetterFace;
 			sourceTree = "<group>";
 		};
 		792586FC17F036530062BB42 /* Contacts */ = {
@@ -633,6 +671,7 @@
 		79624D8A1907AAA800DF97BD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7922AB221C3FB9E6008A5F35 /* BetterFace */,
 				79FCB78B1B82D85F006036D6 /* Waterfall */,
 				799341341B81D64300EDE87F /* Collection */,
 				79E68D021B7B15FC0019129A /* Pop */,
@@ -1057,6 +1096,7 @@
 				79624DA61907AAD200DF97BD /* AnimationView.m in Sources */,
 				793C1F521A11E22D007D76FC /* GradientView.m in Sources */,
 				79F3345919050E4C00417E21 /* IAPHelper.m in Sources */,
+				7916DFD11C59E2A9004041F4 /* FXBlurView.m in Sources */,
 				79E68D081B7B17F70019129A /* PopSpringViewController.m in Sources */,
 				79FCB78E1B82D98C006036D6 /* LHWaterfallViewController.m in Sources */,
 				79624DA01907AAA800DF97BD /* InAppPurchaseViewController.m in Sources */,
@@ -1103,6 +1143,7 @@
 				79279F941B1D953B00276E60 /* AFSecurityPolicy.m in Sources */,
 				79A40E7E1A0CB26900DB11D6 /* RootFuncViewController.m in Sources */,
 				79A8CDF41C0D412300E889EC /* PushDetailViewController.m in Sources */,
+				7922AB291C3FBA1B008A5F35 /* BetterFaceViewController.m in Sources */,
 				79905DB01AE637690006FB10 /* Test.m in Sources */,
 				79624DA11907AAA800DF97BD /* LHCoreImageViewController.m in Sources */,
 				7951ADE21A358F18002BA5B7 /* PDKeychainBindings.m in Sources */,
@@ -1122,6 +1163,7 @@
 				79279F961B1D953B00276E60 /* AFURLRequestSerialization.m in Sources */,
 				7978F4E81C0C2CA100415B80 /* CustomPopAnimation.m in Sources */,
 				7925870E17F036530062BB42 /* ABAddressBook.m in Sources */,
+				791FA2D91C3E5CB8003D7BCA /* PTImageButton.m in Sources */,
 				79624D9F1907AAA800DF97BD /* ImageEffectViewController.m in Sources */,
 				79279F911B1D953B00276E60 /* AFHTTPRequestOperationManager.m in Sources */,
 				7951ADEE1A3590FB002BA5B7 /* UIButton+Additions.m in Sources */,
